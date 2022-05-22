@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block feedback %}
+<div class="feedback">
+    <form action="post_feedback" method="POST">
+    {% csrf_token %}
+
+    <div class="dropdown-container col">
+        <select id="catagory" class="form-select" aria-label="Default select example">
+            <option selected value="All"> Select A Catagory </option>
+            <option value="Photography">Photography</option>
+            <option value="UI/UX">UI/UX</option>
+            <option value="Marketing">Marketing</option>
+        </select>
+
+        <select id="rating" class="form-select" aria-label="Default select example">
+            <option selected value="1">Rate Our Work</option>
+            <option value="1">1*</option>
+            <option value="2">2*</option>
+            <option value="3">3*</option>
+            <option value="4">4*</option>
+            <option value="5">5*</option>
+        </select>
+    </div>
+
+    <div class="container">
+    <span id="rateMe2"  class="empty-stars"></span>
+    </div>
+
+    <input id="input-catagory" class="form-control" type="hidden" id="name" name="catagory" value="All">
+    <input id="input-rating" class="form-control" type="hidden" id="name" name="rating" value="1">
+
+    <div class="form-group my-2">
+        <label for="name" class="form-label fw-bolder">Full Name</label>
+        <input class="form-control" type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group my-2">
+        <label for="email" class="form-label fw-bolder">Email</label>
+        <input class="form-control" type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group my-2">
+        <label for="message" class="form-label fw-bolder">Message</label>
+        <textarea class="form-control" style="resize: none;" id="message" name="feedback" rows="4" required></textarea>
+    </div>
+    <button id="submit" class="btn btn-primary mt-2" type="submit">post</button>
+    </form>
+
+    <div class="feedbacks">
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 col-md-6 col-12 pb-4">
+                        <h1>Comments</h1>
+
+                        {% for comment in comments %}
+                            <div class="comment mt-4 text-justify float-left">
+                                <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
+                                <h4>{{ comment.FullName }}</h4>
+                                <span>{{ comment.Date }}</span>
+                                <br>
+                                <p>{{ comment.Comment }}</p>
+                                <span class="email">{{ comment.Email }}</span> <br>
+                                <span class="Rating">Rating   | {{ comment.Rating }}* </span><br>
+                                <span class="Rating">Catagory | {{ comment.Catagory }} </span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

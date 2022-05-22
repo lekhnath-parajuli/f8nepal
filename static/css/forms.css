@@ -1,0 +1,49 @@
+.col {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.row {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.login :nth-child(4) {
+    padding: 0px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.socialaccount_providers {
+    list-style: none;
+}
+
+.google::before {
+    content: 'or login with >>> ';
+    font-size: 16px;
+}
+
+.google {
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+form input {
+    color:red;
+}

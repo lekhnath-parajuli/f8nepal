@@ -1,0 +1,17 @@
+.btn-group {
+    position: relative;
+}
+
+.dropdown-menu {
+    background-color: #f6e05e !important;
+    position: absolute;
+    top: 110%;
+}
+
+.secondary-dropdown .dropdown-item {
+    color: #f6e05e !important;
+}
+
+.form-select {
+    display: inline-flex;
+}
