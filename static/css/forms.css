@@ -1,13 +1,3 @@
-.col {
-    display: inline-flex;
-    flex-direction: column;
-}
-
-.row {
-    display: inline-flex;
-    flex-direction: row;
-}
-
 form {
     display: flex;
     flex-direction: column;
@@ -42,8 +32,4 @@ p {
 .google {
     font-weight: bolder;
     font-size: 22px;
-}
-
-form input {
-    color:red;
 }

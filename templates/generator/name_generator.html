@@ -1,0 +1,73 @@
+{% load static %} 
+
+{% block checkbox %}
+  <center class="container generator" id="name_generator">
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+      <input type="radio" class="btn-check" name="btnradio" id="keywords-section" autocomplete="off" checked>
+      <label class="btn btn-outline-primary" for="keywords-section" Style="color: black;">Keywords</label>
+
+      <input type="radio" class="btn-check" name="btnradio" id="randomness-section" autocomplete="off">
+      <label class="btn btn-outline-primary" for="randomness-section" Style="color: black;">Randomness</label>
+    
+      <input type="radio" class="btn-check" name="btnradio" id="name-style-section" autocomplete="off">
+      <label class="btn btn-outline-primary" for="name-style-section" Style="color: black;">Name Style</label>
+    </div>
+
+    <form action="/name-generator/" method="POST">
+      {% csrf_token %}
+      <div class="col" id="keywords">
+        <h3> Brand Keywords </h3>
+
+        <div class="col-sm-8">
+          <input type="" class="form-control" name="key-words" placeholder="Enter Keywords" required>
+        </div>
+      </div>
+
+      <div id="randomness" style="display: none;">
+        <h3> {{name_generator_params.randomness.title}} </h3>
+        <select id="randomness-choice" name="randomness-selection" class="form-select" aria-label="Default select example">
+          {% for key, opetion in name_generator_params.randomness.choices.items%}
+            <option value="{{opetion}}">{{key}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div id="name-style" style="display: none;">
+        <h3> {{name_generator_params.name_style.title}} </h3>
+
+        <select id="rating" class="form-select" name="name-style-selection" aria-label="Default select example">
+          {% for key, opetion in name_generator_params.name_style.choices.items%}
+            <option value="{{opetion}}">{{key}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3" name="business-name-generator" value="{{name_generator_params.generate}}">Generate</button>
+      </div>
+    </form>
+  </center>
+
+  <script>
+    document.getElementById("keywords-section").addEventListener("click", function() {
+      console.log("keywords")
+      document.getElementById("keywords").style.display = "block";
+      document.getElementById("randomness").style.display = "none";
+      document.getElementById("name-style").style.display = "none";
+    });
+
+    document.getElementById("randomness-section").addEventListener("click", function() {
+      console.log("randomness")
+      document.getElementById("keywords").style.display = "none";
+      document.getElementById("randomness").style.display = "block";
+      document.getElementById("name-style").style.display = "none";
+    });
+
+    document.getElementById("name-style-section").addEventListener("click", function() {
+      console.log("name-style")
+      document.getElementById("keywords").style.display = "none";
+      document.getElementById("randomness").style.display = "none";
+      document.getElementById("name-style").style.display = "block";
+    });
+  </script>
+{% endblock %}

@@ -22,6 +22,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', include('article.urls')),
+
     path('admin/', admin.site.urls),
     path('', index_view, name="index"),
     path('feedback/', feedback_view, name="feedback"),
@@ -30,5 +32,8 @@ urlpatterns = [
     path('account/profile', index_view),
     path('sent_mail',  send_mail,   name="mail"),
     path('khalti/', include('khalti.urls')),
+
+    path('branding/', branding_view, name="branding"),
+    path('name-generator/', get_business_names, name="name-generator"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
