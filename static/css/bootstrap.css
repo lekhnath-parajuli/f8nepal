@@ -7074,10 +7074,10 @@ fieldset:disabled .btn {
 .align-self-end {
   align-self: flex-end !important;
 }
-
+/* 
 .align-self-center {
   align-self: center !important;
-}
+} */
 
 .align-self-baseline {
   align-self: baseline !important;

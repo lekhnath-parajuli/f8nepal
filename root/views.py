@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from ipaddress import ip_address
 from django.shortcuts import render
 from django.core.mail import EmailMessage
 from .services import BusinessNameGenerator
@@ -140,3 +140,28 @@ def send_mail(request):
     }
 
     return render(request, 'index.html', context)
+
+
+def article_home_view(request):
+    context = {
+        'article': Article.objects.latest('pk'),
+        'next': Article.objects.all()[0],
+        'other': Article.objects.all()[1:4],
+        'all_article': Article.objects.all()[4:],
+        
+    }
+    return render(request, 'article/article-index-view/index.html',  context)
+
+def open_article_view(request, pk):
+    context = {
+        'article': Article.objects.get(pk=pk),
+        'next': Article.objects.all()[0],
+        'other': Article.objects.all()[1:4],
+    }
+    return render(request, 'article/article-open-view/open-article.html', context)
+
+def subscribe(request, pk):
+    context = {
+        'article': Article.objects.get(pk=pk)
+    }
+    return render(request, 'article/article-open-view/open-article.html', context)

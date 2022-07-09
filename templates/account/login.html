@@ -6,11 +6,12 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
-  <h1>{% trans "Sign In" %}</h1>
 
   {% get_providers as socialaccount_providers %}
 
   <form class="login" method="POST" action="{% url 'account_login' %}">
+    <h1>{% trans "Sign In" %}</h1>
+
     {% csrf_token %}
     {{ form.as_p }}
     {% if redirect_field_value %}

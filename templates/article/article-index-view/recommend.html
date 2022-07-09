@@ -1,0 +1,29 @@
+{% load static %}
+
+{% block recommend %}
+<div class="container pt-4 pb-4">
+	<div class="row">
+		{% comment %} most recomended article {% endcomment %}
+		{% include 'article/article-index-view/relevant.html' %}
+		
+		<div class="col-lg-6">
+			<div class="flex-md-row mb-4 box-shadow h-xl-300">
+				{% for article in other %}
+				<div class="mb-3 d-flex align-items-center">
+					<img height="80" src={{article.cover_image.url}}>
+					<div class="pl-3">
+						<h2 class="mb-2 h6 font-weight-bold">
+						<a class="text-dark" href="{% url 'open-article' article.pk %}">{{article.head}}</a>
+						</h2>
+						<div class="card-text text-muted small">
+							{{article.author}}
+						</div>
+						<small class="text-muted">{{article.posted_on}}</small>
+					</div>
+				</div>
+				{% endfor %}				
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock recommend %}

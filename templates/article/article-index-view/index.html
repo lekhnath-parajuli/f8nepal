@@ -1,0 +1,23 @@
+{% extends 'article/base.html' %}
+
+{% block content %}
+<style> 
+	h1, p {
+		text-align: left;
+	}
+
+	.container .card .background-image {
+		height: 150px !important;
+		background-size: cover !important;
+		background-repeat: no-repeat !important;
+	}
+
+	.container .jumbotron .row .main-home-image {
+		background-size:cover;
+	}
+</style>
+
+{% include 'article/article-index-view/article-preview.html' %}
+{% include 'article/article-index-view/recommend.html' %}
+{% include 'article/article-index-view/article-list.html' %}
+{% endblock  %}

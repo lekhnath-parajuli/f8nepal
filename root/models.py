@@ -1,3 +1,4 @@
+import email
 from pyexpat import model
 from xml.etree.ElementTree import Comment
 from django.db import models
@@ -43,3 +44,24 @@ class Customers(models.Model):
     Discription = models.CharField(max_length=200)
     Fade = models.CharField(max_length=30)
     Delay = models.CharField(max_length=30) 
+
+
+class Article(models.Model):
+    head = models.CharField(max_length=200)
+    headline = models.CharField(max_length=500)
+    body = models.TextField()
+    author = models.CharField(max_length=30)
+    posted_on = models.DateTimeField(auto_now_add = True)
+    cover_image = models.ImageField(upload_to='images/article/cover')
+    main_image = models.ImageField(upload_to='images/article/main')
+    author_profile = models.ImageField(upload_to='images/article/author')
+    pdf = models.FileField(upload_to='images/article/pdfs', default=None)
+ 
+class Recommend(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    user = models.TextField(max_length=512)
+
+class Popular(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    user = models.TextField(max_length=512)
+

@@ -1,0 +1,29 @@
+{% block all_article_list %}
+<div class="container">
+	<div class="row justify-content-between">
+		<div class="col-md-8">
+			<h5 class="font-weight-bold spanborder"><span>All Stories</span></h5>
+
+			{% for article in all_article %}
+			<div class="mb-3 d-flex justify-content-between">
+				<div class="pr-3">
+					<h2 class="mb-1 h4 font-weight-bold">
+					<a class="text-dark" href="./article.html">{{article.head}}</a>
+					</h2>
+					<p>
+						{{article.headline}}
+					</p>
+					<div class="card-text text-muted small">
+						 {{article.author}}
+					</div>
+					<small class="text-muted">{{article.posted_on}}</small>
+				</div>
+				<img height="120" src={{article.cover_image.url}}>
+			</div>
+			{% endfor %}
+		</div>
+        {% comment %} popular_articles {% endcomment %}
+        {% include 'article/article-index-view/popular-articles.html' %}
+	</div>
+</div>
+{% endblock all_article_list %}

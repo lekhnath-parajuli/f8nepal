@@ -1,0 +1,21 @@
+{% load static %}
+
+{% block most_relevant %}
+<div class="col-lg-6">
+    <div class="card border-0 mb-4 box-shadow h-xl-300">              
+        <img class="background-image" src={{next.cover_image.url}} </img>
+        <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
+            <h2 class="h4 font-weight-bold">
+            <a class="text-dark" href="{% url 'open-article' next.pk %}">{{next.head}}</a>
+            </h2>
+            <p class="card-text">
+                 {{next.headline}}
+            </p>
+            <div>
+                <small class="d-block"><a class="text-muted" href="./author.html">{{next.author}}</a></small>
+                <small class="text-muted">{{next.posted_on}}</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock most_relevant %}
